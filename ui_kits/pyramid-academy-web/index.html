@@ -1,0 +1,60 @@
+<!-- @dsCard group="Pyramid Academy Web" viewport="1280x900" name="Homepage" subtitle="Hero, Courses, Trust, About, Contact, Footer" -->
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8">
+  <title>Pyramid Academy — Zamonaviy Ta'lim Markazi</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link rel="stylesheet" href="../../styles.css">
+  <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+  <script src="../../_ds_bundle.js"></script>
+  <style>
+    html, body { background: var(--bg-page); }
+    /* Section reveal on scroll */
+    [data-reveal] { opacity: 0; transform: translateY(16px); transition: opacity 600ms cubic-bezier(.4,0,.2,1), transform 600ms cubic-bezier(.4,0,.2,1); }
+    [data-reveal].is-visible { opacity: 1; transform: translateY(0); }
+  </style>
+</head>
+<body>
+  <div id="root"></div>
+  <script type="text/babel" src="icons.jsx"></script>
+  <script type="text/babel" src="Hero.jsx"></script>
+  <script type="text/babel" src="CoursesSection.jsx"></script>
+  <script type="text/babel" src="TrustSection.jsx"></script>
+  <script type="text/babel" src="AboutSection.jsx"></script>
+  <script type="text/babel" src="ContactSection.jsx"></script>
+  <script type="text/babel">
+    const { Navbar, Footer } = window.PyramidAcademyDesignSystem_4db737;
+
+    function App() {
+      const [lang, setLang] = React.useState("UZ");
+
+      React.useEffect(() => {
+        const io = new IntersectionObserver((entries) => {
+          entries.forEach(e => { if (e.isIntersecting) e.target.classList.add("is-visible"); });
+        }, { threshold: 0.08 });
+        document.querySelectorAll("[data-reveal]").forEach(el => io.observe(el));
+        return () => io.disconnect();
+      }, []);
+
+      return (
+        <>
+          <Navbar currentLang={lang} onLangChange={setLang} />
+          <main>
+            <div data-reveal className="is-visible"><Hero /></div>
+            <div data-reveal><CoursesSection /></div>
+            <div data-reveal><TrustSection /></div>
+            <div data-reveal><AboutSection /></div>
+            <div data-reveal><ContactSection /></div>
+          </main>
+          <Footer />
+        </>
+      );
+    }
+
+    ReactDOM.createRoot(document.getElementById("root")).render(<App />);
+  </script>
+</body>
+</html>

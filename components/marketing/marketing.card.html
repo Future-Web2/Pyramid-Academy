@@ -1,0 +1,70 @@
+<!-- @dsCard group="Components" viewport="1100x520" name="Marketing" subtitle="Navbar, CourseCard, Testimonial, Footer" -->
+<!doctype html>
+<html><head><meta charset="utf-8"><link rel="stylesheet" href="../../styles.css">
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script src="../../_ds_bundle.js"></script>
+<style>
+  body { margin: 0; background: var(--bg-page); font-family: var(--font-sans); }
+  .body-pad { padding: 24px; display: flex; flex-direction: column; gap: 24px; max-width: 1200px; margin: 0 auto; }
+  .grid3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .grid2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+</style></head>
+<body><div id="root"></div>
+<script type="text/babel">
+const { Navbar, CourseCard, Testimonial, Footer } = window.PyramidAcademyDesignSystem_4db737;
+
+const Icon = ({d}) => (
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d={d}/></svg>
+);
+
+ReactDOM.createRoot(document.getElementById('root')).render(
+  <div>
+    <Navbar />
+    <div className="body-pad">
+      <div className="grid3">
+        <CourseCard
+          icon={<Icon d="M22 10v6M2 10l10-5 10 5-10 5z M6 12v5c3 3 9 3 12 0v-5"/>}
+          title="IELTS Preparation"
+          description="7.0+ natijaga tayyorgarlik. Chet elga o'qishga kirish uchun."
+          audience="Chet elga o'qishga ketuvchilar"
+          duration="3–6 oy"
+          level="B2 → C1"
+          highlighted
+        />
+        <CourseCard
+          icon={<Icon d="M9 11l3 3L22 4 M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/>}
+          title="CEFR"
+          description="Ingliz tilining barcha darajalari — A1 dan C2 gacha."
+          audience="Barcha darajalar"
+          duration="2–8 oy"
+          level="A1 → C2"
+        />
+        <CourseCard
+          icon={<Icon d="M14 2v6h6 M16 13H8 M16 17H8 M10 9H8 M6 2h8l6 6v12a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2z"/>}
+          title="SAT Preparation"
+          description="Amerika universitetlariga kirish imtihoni — 1400+ uchun yo'naltirilgan."
+          audience="Maktab o'quvchilari"
+          duration="3–4 oy"
+          level="11–12 sinf"
+        />
+      </div>
+      <div className="grid2">
+        <Testimonial
+          quote="O'qituvchilar juda professional. 4 oy ichida IELTS 6.5 dan 7.5 ga ko'tarildim."
+          name="Aziza Karimova"
+          role="IELTS talabasi"
+          score="IELTS 7.5"
+        />
+        <Testimonial
+          quote="Farzandim 5-sinfdan mental arifmetika kursiga qatnashadi. Matematikadan eng yaxshi sinfda."
+          name="Dilshod Yusupov"
+          role="Ota-ona"
+        />
+      </div>
+    </div>
+    <Footer />
+  </div>
+);
+</script></body></html>

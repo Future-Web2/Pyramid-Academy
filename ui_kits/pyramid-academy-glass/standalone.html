@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="uz" class="glass-kit">
+<head>
+  <meta charset="utf-8">
+  <title>Pyramid Academy — Zamonaviy Ta'lim Markazi</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- JS-referenced assets (lifted for the bundler) -->
+  <meta name="ext-resource-dependency" content="./assets/loader.mp4" data-resource-id="heroVideo" />
+  <meta name="ext-resource-dependency" content="./assets/pyramid-mark-on-navy.jpg" data-resource-id="aboutImg" />
+
+  <link rel="stylesheet" href="../../styles.css">
+  <link rel="stylesheet" href="./glass.css">
+  <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+
+  <template id="__bundler_thumbnail" data-bg-color="#050B1F">
+    <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <radialGradient id="bg" cx="50%" cy="40%" r="60%">
+          <stop offset="0%" stop-color="#1E3A8A" stop-opacity="0.6"/>
+          <stop offset="100%" stop-color="#050B1F" stop-opacity="1"/>
+        </radialGradient>
+        <linearGradient id="silver" x1="0" x2="0" y1="0" y2="1">
+          <stop offset="0%" stop-color="#F8FAFC"/>
+          <stop offset="100%" stop-color="#CBD5E1"/>
+        </linearGradient>
+      </defs>
+      <rect width="1200" height="800" fill="url(#bg)"/>
+      <g transform="translate(420 220)" fill="url(#silver)">
+        <path d="M30 480 L210 480 L120 180 Z"/>
+        <path d="M360 480 L540 480 L450 180 Z"/>
+        <path d="M300 30 L375 270 L300 480 L225 270 Z"/>
+      </g>
+      <text x="600" y="700" text-anchor="middle"
+            font-family="Inter, system-ui, sans-serif"
+            font-size="40" font-weight="700" letter-spacing="6"
+            fill="#F8FAFC" opacity="0.92">PYRAMID ACADEMY</text>
+    </svg>
+  </template>
+</head>
+<body>
+  <div id="root"></div>
+
+  <script type="text/babel" src="./g-icons.jsx"></script>
+  <script type="text/babel" src="./GlassPyramidMark.jsx"></script>
+  <script type="text/babel" src="./GlassBackground.jsx"></script>
+  <script type="text/babel" src="./GlassNav.jsx"></script>
+  <script type="text/babel" src="./GlassPyramidTracker.jsx"></script>
+  <script type="text/babel" src="./GlassHero.jsx"></script>
+  <script type="text/babel" src="./GlassCourses.jsx"></script>
+  <script type="text/babel" src="./GlassTrust.jsx"></script>
+  <script type="text/babel" src="./GlassAbout.jsx"></script>
+  <script type="text/babel" src="./GlassContact.jsx"></script>
+  <script type="text/babel" src="./GlassFooter.jsx"></script>
+
+  <script src="./parallax.js" defer></script>
+
+  <script type="text/babel">
+    function App() {
+      // Scroll reveal
+      React.useEffect(() => {
+        const io = new IntersectionObserver((entries) => {
+          entries.forEach(e => { if (e.isIntersecting) e.target.classList.add("is-visible"); });
+        }, { threshold: 0.08 });
+        document.querySelectorAll(".glass-reveal").forEach(el => io.observe(el));
+        return () => io.disconnect();
+      }, []);
+
+      return (
+        <>
+          <GlassBackground />
+          <div style={{ position: "relative", zIndex: 1 }}>
+            <GlassNav />
+            <main>
+              <GlassHero />
+
+              <section style={{ padding: "0 24px 96px", maxWidth: 1280, margin: "0 auto" }} className="glass-reveal">
+                <div className="glass glass--xl glass--sheen" data-parallax data-speed="0.03" style={{ padding: "44px 44px", background: "rgba(15,23,42,0.5)" }}>
+                  <span className="sheen-track" aria-hidden />
+                  <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: 12, marginBottom: 28 }}>
+                    <div>
+                      <span className="gbadge gbadge--blue" style={{ marginBottom: 12 }}>Signature</span>
+                      <h2 className="glass-text" style={{
+                        fontSize: "clamp(26px, 3vw, 36px)", fontWeight: 700, lineHeight: 1.2,
+                        letterSpacing: "-0.02em", margin: 0, color: "var(--glass-text-primary)",
+                      }}>
+                        Piramida Glass Tracker
+                      </h2>
+                    </div>
+                    <p style={{ fontSize: 15, color: "var(--glass-text-secondary)", margin: 0, maxWidth: 380 }}>
+                      Darajangizni tanlang — sizga mos kursni darhol ko'rasiz.
+                    </p>
+                  </div>
+                  <GlassPyramidTracker />
+                </div>
+              </section>
+
+              <div className="glass-reveal"><GlassCourses /></div>
+              <div className="glass-reveal"><GlassTrust /></div>
+              <div className="glass-reveal"><GlassAbout /></div>
+              <div className="glass-reveal"><GlassContact /></div>
+            </main>
+            <GlassFooter />
+          </div>
+        </>
+      );
+    }
+
+    ReactDOM.createRoot(document.getElementById("root")).render(<App />);
+  </script>
+</body>
+</html>

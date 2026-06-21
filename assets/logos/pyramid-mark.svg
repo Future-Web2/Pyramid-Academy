@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 180" fill="none" aria-label="Pyramid Academy">
+  
+  
+  <path d="M10 160 L70 160 L40 60 Z" fill="currentColor"></path>
+  
+  <path d="M130 160 L190 160 L160 60 Z" fill="currentColor"></path>
+  
+  <path d="M100 10 L125 90 L100 160 L75 90 Z" fill="currentColor"></path>
+</svg>

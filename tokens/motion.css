@@ -1,0 +1,18 @@
+/* Pyramid Academy — motion tokens.
+   Restrained, purposeful. Mostly subtle lifts + fades — no bounces. */
+
+:root {
+  --duration-instant: 80ms;  /* @kind other */
+  --duration-fast:   150ms;  /* @kind other */
+  --duration-base:   200ms;  /* @kind other */
+  --duration-slow:   320ms;  /* @kind other */
+  --duration-slower: 500ms;  /* @kind other */
+
+  --ease-standard:  cubic-bezier(0.4, 0, 0.2, 1);   /* @kind other */
+  --ease-emphasis:  cubic-bezier(0.2, 0.7, 0.1, 1); /* @kind other */
+  --ease-out:       cubic-bezier(0, 0, 0.2, 1);     /* @kind other */
+  --ease-in:        cubic-bezier(0.4, 0, 1, 1);     /* @kind other */
+
+  /* Hover transform per brief */
+  --hover-scale: 1.04;  /* @kind other */
+}

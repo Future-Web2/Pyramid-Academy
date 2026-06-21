@@ -1,0 +1,6 @@
+/* Pyramid Academy — web fonts.
+   FONT SUBSTITUTION NOTE: no .ttf/.woff2 binaries were provided.
+   We load Inter (primary) and Poppins (display alt) from Google Fonts
+   per the brief. Swap to self-hosted files when binaries are supplied. */
+
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@500;600;700&display=swap");

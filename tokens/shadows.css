@@ -1,0 +1,21 @@
+/* Pyramid Academy — shadow system.
+   Soft, low-contrast lifts. Navy-tinted to harmonize with the palette.
+   We avoid the 2020-era heavy drop shadow look. */
+
+:root {
+  --shadow-xs:    0 1px 2px 0 rgba(15, 23, 42, 0.05);
+  --shadow-sm:    0 1px 3px 0 rgba(15, 23, 42, 0.08), 0 1px 2px -1px rgba(15, 23, 42, 0.06);
+  --shadow-md:    0 4px 12px -2px rgba(15, 23, 42, 0.08), 0 2px 4px -2px rgba(15, 23, 42, 0.06);
+  --shadow-lg:    0 12px 24px -8px rgba(15, 23, 42, 0.12), 0 4px 8px -4px rgba(15, 23, 42, 0.06);
+  --shadow-xl:    0 24px 48px -12px rgba(15, 23, 42, 0.18);
+
+  /* Navy-tinted lift for primary brand surfaces */
+  --shadow-brand: 0 12px 32px -10px rgba(37, 99, 235, 0.35);
+
+  /* Inner highlight used on dark navy surfaces (echoes silver bevel of logo) */
+  --shadow-inset-bevel: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+
+  /* Focus ring */
+  --ring-focus: 0 0 0 3px rgba(37, 99, 235, 0.32);
+  --ring-accent: 0 0 0 3px rgba(245, 158, 11, 0.32);
+}

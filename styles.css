@@ -1,0 +1,12 @@
+/* Pyramid Academy — root stylesheet
+   Consumers link this single file. It is import-only by design.
+   Everything reachable from here is shipped to consumers. */
+
+@import "./tokens/colors.css";
+@import "./tokens/typography.css";
+@import "./tokens/spacing.css";
+@import "./tokens/radii.css";
+@import "./tokens/shadows.css";
+@import "./tokens/motion.css";
+@import "./tokens/fonts.css";
+@import "./tokens/base.css";

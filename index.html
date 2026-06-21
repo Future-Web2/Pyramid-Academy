@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8">
+  <title>Pyramid Academy — Demos & Design Systems</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Pyramid Academy o'quv markazining interaktiv veb-sayt variantlari. Klasik va Glassmorfizm dizayn uslublari demo versiyalari.">
+  <link rel="stylesheet" href="./styles.css">
+  
+  <style>
+    /* Custom style overlay for the landing page gateway */
+    body {
+      background: var(--gradient-navy-felt);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      margin: 0;
+      padding: 60px 20px;
+      color: var(--text-inverse);
+      font-family: var(--font-sans);
+      overflow-x: hidden;
+      box-sizing: border-box;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 50px;
+      animation: fadeInDown 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .logo-container {
+      width: 280px;
+      margin: 0 auto 24px;
+      color: var(--white);
+    }
+    
+    .logo-container svg {
+      width: 100%;
+      height: auto;
+    }
+    
+    .logo-container svg path {
+      animation: logoPulse 4s infinite ease-in-out;
+    }
+    
+    .logo-container svg path:nth-child(3) {
+      color: var(--brand-amber-500);
+      fill: var(--brand-amber-500);
+      animation-delay: 0.5s;
+    }
+
+    h1 {
+      font-family: var(--font-display-alt);
+      font-size: clamp(24px, 4vw, 36px);
+      font-weight: var(--weight-bold);
+      letter-spacing: var(--tracking-tight);
+      margin: 0 0 12px;
+      background: linear-gradient(135deg, var(--white) 30%, var(--brand-silver-200) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .subtitle {
+      font-size: clamp(14px, 2vw, 16px);
+      color: var(--slate-400);
+      max-width: 600px;
+      margin: 0 auto;
+      line-height: var(--leading-relaxed);
+    }
+
+    .cards-container {
+      display: flex;
+      gap: 30px;
+      max-width: 1000px;
+      width: 100%;
+      margin: 0 auto;
+      justify-content: center;
+      flex-wrap: wrap;
+      animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.15s both;
+    }
+
+    .demo-card {
+      flex: 1;
+      min-width: 320px;
+      max-width: 460px;
+      border-radius: var(--radius-2xl);
+      padding: 40px;
+      text-decoration: none;
+      color: var(--white);
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 440px;
+      box-sizing: border-box;
+      box-shadow: var(--shadow-xl);
+    }
+
+    /* Standard Card specific style */
+    .card-standard {
+      background: rgba(20, 41, 107, 0.45);
+      border: 1px solid rgba(59, 130, 246, 0.3);
+    }
+
+    .card-standard::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: radial-gradient(circle at top left, rgba(59, 130, 246, 0.15) 0%, transparent 60%);
+      transition: opacity 0.4s ease;
+    }
+
+    .card-standard:hover {
+      transform: translateY(-8px);
+      border-color: var(--brand-amber-500);
+      box-shadow: 0 20px 40px rgba(245, 158, 11, 0.15), rgba(59, 130, 246, 0.2) 0px 4px 30px;
+    }
+
+    /* Glassmorphism Card specific style */
+    .card-glass {
+      background: rgba(15, 23, 42, 0.5);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+    }
+
+    .card-glass::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: radial-gradient(circle at bottom right, rgba(255, 255, 255, 0.04) 0%, transparent 60%);
+      transition: opacity 0.4s ease;
+    }
+
+    .card-glass:hover {
+      transform: translateY(-8px);
+      border-color: rgba(255, 255, 255, 0.25);
+      box-shadow: 0 20px 45px rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.03) 0px 10px 30px;
+    }
+
+    .card-badge {
+      align-self: flex-start;
+      padding: 6px 12px;
+      border-radius: var(--radius-full);
+      font-size: var(--text-overline);
+      font-weight: var(--weight-bold);
+      letter-spacing: var(--tracking-overline);
+      text-transform: uppercase;
+      margin-bottom: 24px;
+      z-index: 2;
+    }
+
+    .badge-standard {
+      background: var(--brand-navy-700);
+      color: var(--brand-navy-50);
+      border: 1px solid var(--brand-navy-500);
+    }
+
+    .badge-glass {
+      background: rgba(255, 255, 255, 0.08);
+      color: var(--white);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+    }
+
+    .card-content {
+      z-index: 2;
+    }
+
+    .card-title {
+      font-family: var(--font-display-alt);
+      font-size: var(--text-h3);
+      font-weight: var(--weight-bold);
+      margin: 0 0 14px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .card-title .arrow {
+      transition: transform 0.3s ease;
+      display: inline-block;
+    }
+
+    .demo-card:hover .card-title .arrow {
+      transform: translateX(6px);
+    }
+
+    .card-desc {
+      font-size: var(--text-body-sm);
+      color: var(--slate-300);
+      line-height: var(--leading-relaxed);
+      margin: 0 0 24px;
+    }
+
+    .features-list {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 32px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .features-list li {
+      font-size: var(--text-caption);
+      color: var(--slate-400);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .features-list li::before {
+      content: '✓';
+      color: var(--brand-amber-500);
+      font-weight: bold;
+    }
+
+    .card-glass .features-list li::before {
+      color: var(--white);
+      opacity: 0.8;
+    }
+
+    .action-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 14px 28px;
+      border-radius: var(--radius-lg);
+      font-size: var(--text-button);
+      font-weight: var(--weight-semibold);
+      width: 100%;
+      text-align: center;
+      box-sizing: border-box;
+      transition: all 0.3s ease;
+      z-index: 2;
+    }
+
+    .btn-standard {
+      background: var(--brand-navy-600);
+      color: var(--white);
+      border: 1px solid transparent;
+    }
+
+    .card-standard:hover .btn-standard {
+      background: var(--brand-amber-500);
+      color: var(--slate-950);
+      box-shadow: 0 4px 15px rgba(245, 158, 11, 0.4);
+    }
+
+    .btn-glass {
+      background: rgba(255, 255, 255, 0.08);
+      color: var(--white);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(4px);
+    }
+
+    .card-glass:hover .btn-glass {
+      background: var(--white);
+      color: var(--slate-950);
+      box-shadow: 0 8px 20px rgba(255, 255, 255, 0.3);
+    }
+
+    footer {
+      margin-top: 60px;
+      text-align: center;
+      font-size: var(--text-caption);
+      color: var(--slate-500);
+      animation: fadeIn 1s ease-out 0.4s both;
+    }
+
+    /* Keyframes */
+    @keyframes fadeInDown {
+      from {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes logoPulse {
+      0%, 100% { transform: scale(1); filter: drop-shadow(0 0 0px rgba(255,255,255,0)); }
+      50% { transform: scale(1.02); filter: drop-shadow(0 0 15px rgba(245, 158, 11, 0.25)); }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo-container">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 180" fill="none" aria-label="Pyramid Academy">
+        <g fill="currentColor">
+          <path d="M10 160 L70 160 L40 60 Z"></path>
+          <path d="M130 160 L190 160 L160 60 Z"></path>
+          <path d="M100 10 L125 90 L100 160 L75 90 Z"></path>
+        </g>
+        <g fill="currentColor" font-family="Inter, system-ui, sans-serif">
+          <text x="220" y="90" font-size="36" font-weight="700" letter-spacing="-0.5">PYRAMID</text>
+          <text x="220" y="128" font-size="18" font-weight="500" letter-spacing="4" opacity="0.78">ACADEMY</text>
+        </g>
+      </svg>
+    </div>
+    <h1>Zamonaviy Ta'lim Markazi</h1>
+    <p class="subtitle">Dizayn tizimi va bosh sahifaning interaktiv demo-versiyalaridan birini tanlang</p>
+  </header>
+
+  <main class="cards-container">
+    <!-- Standard Card -->
+    <a href="./ui_kits/pyramid-academy-web/index.html" class="demo-card card-standard">
+      <div>
+        <span class="card-badge badge-standard">Klasik Stil</span>
+        <div class="card-content">
+          <h2 class="card-title">Standard Branding <span class="arrow">→</span></h2>
+          <p class="card-desc">Rasmiy to'q ko'k ranglar bilan oqlangan va jiddiy dizayn. Progress tracking, maxsus o'quv dasturlari va kahrabo-oltin tuslar uyg'unligi.</p>
+          <ul class="features-list">
+            <li>Garmonik to'q ko'k va oltin-kahrabo ranglar</li>
+            <li>Piramida tizimidagi reyting tracker'i</li>
+            <li>Mukammal vizual iyerarxiya va tushunarli tuzilma</li>
+          </ul>
+        </div>
+      </div>
+      <div class="action-btn btn-standard">Dizaynni ko'rish</div>
+    </a>
+
+    <!-- Glassmorphism Card -->
+    <a href="./ui_kits/pyramid-academy-glass/index.html" class="demo-card card-glass">
+      <div>
+        <span class="card-badge badge-glass">Glassmorphism</span>
+        <div class="card-content">
+          <h2 class="card-title">Glass Edition <span class="arrow">→</span></h2>
+          <p class="card-desc">Ultra-zamonaviy shaffof oyna va backdrop-filter blur effekti. Dinamik parallaks fon animatsiyasi va silliq interaktivlik.</p>
+          <ul class="features-list">
+            <li>Yarim-shaffof oyna va ajoyib backdrop-blur panellari</li>
+            <li>Dinamik parallaks foni va premium micro-interactions</li>
+            <li>Futuristik va trenddagi visual ko'rinish</li>
+          </ul>
+        </div>
+      </div>
+      <div class="action-btn btn-glass">Dizaynni ko'rish</div>
+    </a>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 Pyramid Academy. Hamma huquqlar himoyalangan.</p>
+  </footer>
+
+</body>
+</html>

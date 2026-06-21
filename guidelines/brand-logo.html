@@ -1,0 +1,30 @@
+<!-- @dsCard group="Brand" viewport="700x260" name="Logo — Mark" subtitle="Three triangles, brand portrait + clean vector" -->
+<!doctype html>
+<html><head><meta charset="utf-8"><link rel="stylesheet" href="../styles.css">
+<style>
+  body { margin: 0; padding: 24px; background: var(--bg-page); }
+  .row { display: grid; grid-template-columns: 240px 1fr; gap: 24px; align-items: stretch; }
+  .portrait { border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-sm); aspect-ratio: 1/1; }
+  .portrait img { width: 100%; height: 100%; object-fit: cover; }
+  .swatches { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .swatch { border-radius: var(--radius-md); padding: 18px 20px; min-height: 92px; display: flex; flex-direction: column; justify-content: space-between; }
+  .swatch.dark { background: var(--brand-navy-900); color: white; }
+  .swatch.light { background: white; color: var(--text-default); border: 1px solid var(--border-default); }
+  .swatch svg { width: 36px; height: 36px; }
+  .swatch .label { font-size: 12px; letter-spacing: var(--tracking-overline); text-transform: uppercase; font-weight: 600; opacity: 0.7; }
+</style></head>
+<body>
+  <div class="row">
+    <div class="portrait"><img src="../assets/logos/pyramid-mark-on-navy.jpg" alt=""></div>
+    <div class="swatches">
+      <div class="swatch dark">
+        <svg viewBox="0 0 200 180" fill="currentColor"><path d="M10 160 L70 160 L40 60 Z"/><path d="M130 160 L190 160 L160 60 Z"/><path d="M100 10 L125 90 L100 160 L75 90 Z"/></svg>
+        <span class="label">Mark on Navy</span>
+      </div>
+      <div class="swatch light" style="color: var(--brand-navy-700);">
+        <svg viewBox="0 0 200 180" fill="currentColor"><path d="M10 160 L70 160 L40 60 Z"/><path d="M130 160 L190 160 L160 60 Z"/><path d="M100 10 L125 90 L100 160 L75 90 Z"/></svg>
+        <span class="label" style="color: var(--text-muted);">Mark on Light</span>
+      </div>
+    </div>
+  </div>
+</body></html>
